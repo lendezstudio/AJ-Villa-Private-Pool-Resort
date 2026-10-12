@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# EDIT at launch: replace with the live domain
+Sitemap: https://ajvilla.example.com/sitemap.xml

@@ -1,0 +1,9 @@
+# Internal source material — keep out of the public site
+Images from Facebook/
+*.pdf
+_build/
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
