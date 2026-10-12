@@ -5,37 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | AJ Villa Private Pool &amp; Resort</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#173C3D">
-  <link rel="icon" href="/favicon.ico" sizes="32x32">
-  <link rel="icon" href="/assets/img/icons/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#2E3A31">
+  <!-- Works both on a custom domain (/) and on the GitHub Pages project URL -->
+  <script>document.write('<base href="' + (location.pathname.indexOf("/AJ-Villa-Private-Pool-Resort/") === 0 ? "/AJ-Villa-Private-Pool-Resort/" : "/") + '">');</script>
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" href="assets/img/icons/favicon-32.png" type="image/png" sizes="32x32">
   <!-- Self-contained styles so this page works from any URL depth -->
   <style>
-    @font-face { font-family: "Instrument Serif"; src: url("/assets/fonts/instrument-serif-400.woff2") format("woff2"); font-display: swap; }
-    @font-face { font-family: "Instrument Serif"; font-style: italic; src: url("/assets/fonts/instrument-serif-400-italic.woff2") format("woff2"); font-display: swap; }
-    @font-face { font-family: "Manrope"; src: url("/assets/fonts/manrope-var.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+    @font-face { font-family: "Manrope"; src: url("assets/fonts/manrope-var.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+    @font-face { font-family: "DM Sans"; src: url("assets/fonts/dm-sans-var.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px;
-      background: #173C3D; color: #F7F5F0; font-family: "Manrope", system-ui, sans-serif; line-height: 1.6; text-align: center;
+      background: #F4F0E8; color: #262925; font-family: "DM Sans", system-ui, sans-serif; line-height: 1.6; text-align: center;
     }
-    main { max-width: 34rem; }
-    .k { font-size: .76rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #D9C9AD; }
-    h1 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(2.6rem, 8vw, 4.5rem); line-height: 1; margin: .5rem 0 1rem; }
-    h1 em { color: #D9C9AD; }
-    p { color: rgba(247, 245, 240, .82); margin: 0 0 2rem; }
+    main { max-width: 34rem; display: grid; justify-items: center; }
+    .logo { width: 200px; height: auto; margin-bottom: 40px; }
+    .k { font-family: "Manrope", system-ui, sans-serif; font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #64645C; margin: 0; }
+    h1 { font-family: "Manrope", system-ui, sans-serif; font-weight: 500; font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1; letter-spacing: -.045em; margin: .9rem 0 1rem; }
+    p { color: #64645C; margin: 0 0 2rem; }
     a.btn {
-      display: inline-flex; align-items: center; min-height: 52px; padding: .75rem 1.6rem; border-radius: 999px;
-      background: #F7F5F0; color: #0F2A2B; font-weight: 600; text-decoration: none;
+      display: inline-flex; align-items: center; min-height: 54px; padding: .8rem 1.65rem; border-radius: 2px;
+      background: #2E3A31; color: #F4F0E8; text-decoration: none;
+      font-family: "Manrope", system-ui, sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
     }
-    a.btn:focus-visible { outline: 2px solid #5FC3CC; outline-offset: 3px; }
+    a.btn:hover { background: #3C4B40; }
+    a:focus-visible { outline: 2px solid #2E3A31; outline-offset: 3px; }
   </style>
 </head>
 <body>
   <main>
-    <p class="k">AJ Villa Private Pool &amp; Resort</p>
-    <h1>This page has <em>drifted off</em></h1>
+    <a href="./"><img class="logo" src="assets/img/brand/aj-villa-logo-480.webp" width="913" height="561" alt="AJ Villa Private Pool &amp; Resort"></a>
+    <p class="k">Page not found</p>
+    <h1>This page has drifted off</h1>
     <p>The page you're looking for doesn't exist. Head back to the home page to see the villa, browse photos and send an inquiry.</p>
-    <a class="btn" href="/">Back to AJ Villa</a>
+    <a class="btn" href="./">Back to AJ Villa</a>
   </main>
 </body>
 </html>

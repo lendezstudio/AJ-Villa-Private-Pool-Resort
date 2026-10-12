@@ -244,7 +244,7 @@
       var im = document.createElement("img");
       im.src = srcAt(p, 480);
       im.srcset = srcset(p);
-      im.sizes = "(min-width: 1200px) 300px, (min-width: 760px) 32vw, 48vw";
+      im.sizes = "(min-width: 700px) min(25vw, 340px), 50vw";
       im.width = p.w; im.height = p.h;
       im.loading = i < 4 ? "eager" : "lazy";
       im.decoding = "async";
@@ -268,6 +268,61 @@
       return photos.filter(function (p, i) { return !items[i].hidden; });
     }
 
+    // Photo counts next to each filter label
+    filterBtns.forEach(function (b) {
+      var f = b.getAttribute("data-filter");
+      var n = f === "all" ? photos.length : photos.filter(function (p) { return p.cat === f; }).length;
+      var sup = document.createElement("sup");
+      sup.textContent = n;
+      sup.setAttribute("aria-label", n + " photos");
+      b.appendChild(sup);
+    });
+
+    /* Editorial tile layout. Visible photos are laid out in "blocks" that
+       each fill complete rows, so the grid never ends with gaps.
+       Desktop (4 columns, 2 rows per block) and phone (2 columns) differ. */
+    var desktopMQ = window.matchMedia("(min-width: 700px)");
+    var DESKTOP_BLOCKS = [
+      ["g-big", "g-tall", "g-tall"],
+      ["g-tall", "", "", "g-tall", "", ""],
+      ["g-tall", "g-tall", "g-big"],
+      ["", "", "g-big", "", ""],
+      ["g-tall", "g-tall", "g-tall", "g-tall"]
+    ];
+    var PHONE_BLOCKS = [["g-big"], ["g-tall", "", ""], ["g-big"], ["", "g-tall", ""], ["", ""]];
+
+    function layoutClasses(n) {
+      var blocks = desktopMQ.matches ? DESKTOP_BLOCKS : PHONE_BLOCKS;
+      var out = [], b = 0, left = n;
+      if (desktopMQ.matches && n < 3) { while (out.length < n) out.push("g-big"); return out; }
+      while (left > 0) {
+        var pick = null;
+        for (var k = 0; k < blocks.length; k++) {
+          var cand = blocks[(b + k) % blocks.length];
+          var rest = left - cand.length;
+          if (rest === 0 || (rest > 0 && (!desktopMQ.matches || rest > 2))) { pick = cand; b = (b + k + 1) % blocks.length; break; }
+        }
+        if (!pick) pick = blocks[0].slice(0, left);
+        out = out.concat(pick);
+        left -= pick.length;
+      }
+      return out;
+    }
+
+    function applyLayout() {
+      var visible = items.filter(function (li) { return !li.hidden; });
+      var classes = layoutClasses(visible.length);
+      visible.forEach(function (li, k) {
+        li.classList.remove("g-big", "g-tall");
+        if (classes[k]) li.classList.add(classes[k]);
+        var im = li.querySelector("img");
+        im.sizes = classes[k] === "g-big"
+          ? "(min-width: 700px) min(50vw, 680px), 100vw"
+          : "(min-width: 700px) min(25vw, 340px), 50vw";
+      });
+    }
+    desktopMQ.addEventListener("change", applyLayout);
+
     function render(animate) {
       var shown = 0;
       photos.forEach(function (p, i) {
@@ -277,6 +332,7 @@
         items[i].hidden = !show;
         items[i].classList.toggle("is-new", Boolean(animate && show && wasHidden));
       });
+      applyLayout();
       var remaining = current === "all" && !expanded ? photos.length - initial : 0;
       if (moreBtn) {
         moreBtn.hidden = remaining <= 0;

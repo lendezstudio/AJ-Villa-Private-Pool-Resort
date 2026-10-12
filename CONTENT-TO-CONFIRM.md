@@ -16,7 +16,7 @@ The website only publishes information from the business briefing, the approved 
 | 4 | **Exact Google Maps pin** for the entrance | "Open Map Search" uses a general Google Maps search link | `site-data.js` → `mapLink` |
 | 5 | **Facebook page** URL (profile.php?id=61580922493500) | Linked in footer and FAQ | `site-data.js` → `facebook` |
 | 6 | **Permission to use the photos** from the Facebook page on the website | 38 photos used (see `assets/img/photos/`) | — |
-| 7 | **Logo / brand mark**. Is there an official logo? | A simple "AJ" monogram with a water line was made as a placeholder | `assets/img/icons/`, header SVG in `index.html` |
+| 7 | **Logo**: supplied ("Luxury AJ Villa Resort Logo.png"). The site uses only the villa illustration + AJ monogram (wordmark and tagline removed, per Lendez Studio). Confirm the owner approves this simplified version | Header, footer, 404, favicons, share image | `assets/img/brand/`, `assets/img/icons/` |
 | 8 | **Live domain name** | Placeholder `https://ajvilla.example.com/` in the SEO tags | `index.html` head + JSON-LD, `robots.txt`, `sitemap.xml` |
 
 ## 2. Offer, rates and policies (not on the site yet)

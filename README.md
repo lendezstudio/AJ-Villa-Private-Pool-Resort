@@ -12,9 +12,10 @@ assets/
   css/styles.css        ← all styling (colours and fonts at the top in :root)
   js/site-data.js       ← ★ EDIT HERE: contact details, WhatsApp messages, gallery photos
   js/main.js            ← behaviour (menu, tour tabs, gallery, lightbox, inquiry form)
-  fonts/                ← self-hosted Instrument Serif + Manrope (Google Fonts, OFL licence)
+  fonts/                ← self-hosted Manrope (headings) + DM Sans (body), Google Fonts, OFL licence
   img/photos/           ← optimised WebP photos, in 2–3 sizes each
-  img/icons/            ← favicon + app icons
+  img/brand/            ← logo: villa illustration + AJ monogram, transparent (master PNG + WebP sizes)
+  img/icons/            ← favicons (16/32 = monogram close-up) + app icons (full emblem)
   img/og-image.jpg      ← social sharing preview (1200×630)
 favicon.ico, site.webmanifest, robots.txt, sitemap.xml, .nojekyll
 CONTENT-TO-CONFIRM.md   ← details still waiting for the owner
