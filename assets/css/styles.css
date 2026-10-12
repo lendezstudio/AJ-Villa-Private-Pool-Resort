@@ -155,9 +155,30 @@ address { font-style: normal; }
   height: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter);
   display: flex; align-items: center; gap: 2rem;
 }
-.brand { display: block; margin-right: auto; line-height: 0; }
-.brand__logo { height: 50px; width: auto; }
-@media (min-width: 1100px) { .brand__logo { height: 60px; } }
+.brand { margin-right: auto; }
+
+/* Brand lockup: emblem + "AJ Villa" / "PRIVATE POOL & RESORT".
+   Sizes scale from --mark (emblem height); used in header and footer. */
+.lockup {
+  --mark: 46px;
+  display: inline-flex; align-items: center; gap: calc(var(--mark) * .26);
+  color: var(--text); text-decoration: none; line-height: 1;
+}
+.lockup__mark { height: var(--mark); width: auto; flex: none; }
+.lockup__text {
+  display: grid; gap: calc(var(--mark) * .1);
+  padding-left: calc(var(--mark) * .26); border-left: 1px solid var(--line);
+}
+.lockup__name {
+  font-family: var(--head); font-weight: 600; font-size: calc(var(--mark) * .43);
+  letter-spacing: -.035em; line-height: 1; white-space: nowrap;
+}
+.lockup__sub {
+  font-family: var(--head); font-weight: 600; font-size: max(.54rem, calc(var(--mark) * .135));
+  letter-spacing: .22em; text-transform: uppercase; color: var(--muted); white-space: nowrap;
+}
+@media (min-width: 1100px) { .site-header .lockup { --mark: 56px; } }
+@media (max-width: 359px) { .site-header .lockup { --mark: 40px; } }
 
 .site-nav { display: none; }
 .site-nav ul { display: flex; gap: clamp(1.25rem, 2.2vw, 2.4rem); }
@@ -259,7 +280,7 @@ address { font-style: normal; }
   font-family: var(--head); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
   color: rgba(244, 240, 232, .85);
 }
-.hero__kicker span { width: 32px; height: 1px; background: currentColor; opacity: .7; }
+.hero__kicker-rule { width: 32px; height: 1px; background: currentColor; opacity: .7; }
 .hero__title {
   font-family: var(--head); font-weight: 500;
   font-size: clamp(3rem, 1.2rem + 7.4vw, 9rem); line-height: .93; letter-spacing: -.055em;
@@ -289,6 +310,8 @@ address { font-style: normal; }
 @media (max-width: 699px) {
   .hero__img { object-position: 50% 58%; }
   .hero__actions .btn { flex: 1 1 100%; }
+  .hero__kicker { flex-direction: column; align-items: flex-start; gap: .35rem; }
+  .hero__kicker-rule { display: none; }
   .hero__meta { grid-template-columns: 1fr 1fr; }
   .hero__meta li:last-child { display: none; }
   .hero__meta li + li { padding-left: 16px; }
@@ -587,9 +610,15 @@ address { font-style: normal; }
 .site-footer a { color: var(--text); text-decoration: none; transition: color .25s; }
 .site-footer a:hover { color: var(--green-2); }
 .site-footer__top { display: grid; gap: 44px; padding-bottom: clamp(56px, 7vw, 96px); }
-.site-footer__brand { display: grid; gap: 28px; justify-items: start; }
-.site-footer__logo { width: 190px; height: auto; }
-.site-footer__intro { font-family: var(--head); font-weight: 500; font-size: clamp(1.2rem, 1.05rem + .6vw, 1.5rem); line-height: 1.3; letter-spacing: -.03em; color: var(--text); max-width: 24ch; }
+.site-footer__brand { display: grid; gap: 24px; justify-items: start; align-content: start; }
+.site-footer .lockup--lg { --mark: 78px; color: var(--text); }
+.site-footer .lockup--lg:hover { color: var(--text); }
+/* Footer variant: emblem on top, name / tagline / place stacked beneath */
+.lockup--stacked { flex-direction: column; align-items: flex-start; gap: 20px; }
+.lockup--stacked .lockup__text { border-left: 0; padding-left: 0; gap: 9px; }
+.lockup--stacked .lockup__name { font-size: 1.9rem; }
+.lockup--stacked .lockup__sub { font-size: .66rem; }
+.lockup__place { margin-top: 6px; font-size: .92rem; color: var(--muted); white-space: nowrap; }
 .site-footer__h { font-family: var(--head); font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
 .site-footer__col p { margin-bottom: .8rem; }
 .site-footer__link { border-bottom: 1px solid var(--line); }
@@ -599,7 +628,6 @@ address { font-style: normal; }
   padding-block: 22px; border-top: 1px solid var(--line); font-size: .82rem;
 }
 .site-footer__bottom a { border-bottom: 1px solid rgba(38, 41, 37, .35); }
-@media (min-width: 760px) { .site-footer__logo { width: 220px; } }
 @media (min-width: 760px) { .site-footer__top { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; } }
 @media (max-width: 899px) { .site-footer { padding-bottom: calc(76px + env(safe-area-inset-bottom)); } }
 
